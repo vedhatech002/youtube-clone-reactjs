@@ -1,15 +1,63 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appConfigSlice";
+import { useEffect, useState } from "react";
+import getSearchSuggestion from "../utils/searchSuggesionApi";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestion, setSuggestion] = useState([]);
+  const [showSuggestion, setShowSuggestion] = useState(false);
+
+  const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    //make an api call after every key press
+    //but if the difference between 2 Api Calls is <200ms
+    //decline api call
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestion(searchCache[searchQuery]);
+      } else {
+        getSuggestions();
+      }
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+
+  /**
+   * key -i
+   * - render the component
+   * - useEffect();
+   * - start timer => make api call after 200ms
+   *
+   * key - ip
+   * - destroy the component(useeffect return method)
+   * - render the component
+   * - useEffect()
+   * - start timer => make api all after 200ms
+   */
+
+  const getSuggestions = async () => {
+    if (searchQuery) {
+      const suggestionsData = await getSearchSuggestion(searchQuery);
+      setSuggestion(suggestionsData[1]);
+
+      //update cache
+      dispatch(cacheResults({ [searchQuery]: suggestionsData[1] }));
+    }
+  };
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
 
   return (
-    <header className="px-6 py-4 grid grid-cols-12 items-center  ">
+    <header className="px-6 py-4 grid grid-cols-12 items-center sticky top-0 bg-white z-10">
       <div className="flex items-center gap-6 col-span-3">
         <span className="text-black cursor-pointer" onClick={toggleMenuHandler}>
           <svg
@@ -57,11 +105,15 @@ const Header = () => {
           </svg>
         </span>
       </div>
-      <div className="col-span-7 flex ">
+      <div className="col-span-7 flex  relative">
         <input
           className="px-4 py-1.5 w-[70%] border-[1px] rounded-l-full outline-none border-gray-400"
           type="text"
           placeholder="search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onFocus={() => setShowSuggestion(true)}
+          onBlur={() => setShowSuggestion(false)}
         />
         <button className="border-[1px] px-3 border-l-0 rounded-r-full text-slate-800 bg-[#f2f2f2] border-gray-400">
           <svg
@@ -80,6 +132,34 @@ const Header = () => {
             ></path>
           </svg>
         </button>
+
+        {showSuggestion && (
+          <ul className="absolute bg-white top-11 rounded-lg shadow-xl border w-[31rem] py-2 font-Inter font-semibold ">
+            {suggestion.map((suggestion, index) => (
+              <li
+                key={index}
+                className="flex items-center gap-2 hover:bg-[#e5e5e5]  px-4 py-1 cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m15 15l6 6m-11-4a7 7 0 1 1 0-14a7 7 0 0 1 0 14"
+                  ></path>
+                </svg>
+                {suggestion}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       <div className="col-span-2 text-end text-slate-600 ">
         <span className="float-end">

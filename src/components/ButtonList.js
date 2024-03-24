@@ -16,7 +16,7 @@ const list = [
 
 const ButtonList = () => {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 ">
       {list.map((btnName) => (
         <Button name={btnName} key={btnName} />
       ))}

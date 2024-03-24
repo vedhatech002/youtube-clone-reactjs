@@ -6,7 +6,7 @@ const SideBar = () => {
 
   return (
     <div
-      className={`sticky h-[88.5vh]  border-r px-4   font-Roboto pt-4 ${
+      className={`sticky h-[88.5vh]  border-r px-4   font-Roboto pt-4  top-16 ${
         isMenuopen && "w-[240px]"
       }`}
     >

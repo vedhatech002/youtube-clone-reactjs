@@ -1,0 +1,51 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+X-LIC-LOCATION:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=Asia/Kolkata:20240323T114500
+DTEND;TZID=Asia/Kolkata:20240323T121500
+DTSTAMP:20240322T064333Z
+ORGANIZER;CN=Rishika Kumar:mailto:rishika.kumar@customerlabs.co
+UID:02vo0ege7a4upuhuf0pkk201ic@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=Vishnu Vankayala;X-NUM-GUESTS=0:mailto:vishnu@customerlabs.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=Rishika Kumar;X-NUM-GUESTS=0:mailto:rishika.kumar@customerlabs.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=Dharani Santhakumar;X-NUM-GUESTS=0:mailto:dharani.santhakumar@custo
+ merlabs.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=Vishnu Prasad;X-NUM-GUESTS=0:mailto:vishnu.prasad@customerlabs.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=vedhatech02@gmail.com;X-NUM-GUESTS=0:mailto:vedhatech02@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/xxn-byqk-uce
+X-MICROSOFT-CDO-OWNERAPPTID:1966405660
+CREATED:20240322T064331Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: https://meet.google.com/xx
+ n-byqk-uce\nOr dial: (US) +1 262-563-8839 PIN: 167230743#\nMore phone numbe
+ rs: https://tel.meet/xxn-byqk-uce?pin=6101339932001&hs=7\n\nLearn more abou
+ t Meet at: https://support.google.com/a/users/answer/9282720\n\nPlease do n
+ ot edit this section.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20240322T064331Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Technical Interview- Frontend Developer(Vijayavedhasekaran )/Custom
+ erlabs.Inc
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

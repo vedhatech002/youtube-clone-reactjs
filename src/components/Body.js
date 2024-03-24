@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const Body = () => {
   return (
-    <div className="flex">
+    <div className="flex relative">
       <SideBar />
       <Outlet />
     </div>
