@@ -1,4 +1,5 @@
 import { useParams, useSearchParams } from "react-router-dom";
+import CommentsContainer from "./CommentsContainer";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -21,6 +22,7 @@ const WatchPage = () => {
           allowFullScreen="true"
         ></iframe>
       </div>
+      <CommentsContainer />
     </section>
   );
 };
